@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+
+<h2>Index page</h2>
+<h3>@Localizer["ApplicationHeader"]</h3>
+<br />
+<form method="post" action="Home/SetLanguage">
+    <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+    <input type="submit" value="हिंदी" />
+    <input type="hidden" name="culture" value="hi-IN" style="display:none" />
+</form>
+
+<form method="post" action="Home/SetLanguage">
+<input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+    <input type="submit" value="French" />
+    <input type="hidden" name="culture" value="fr-FR" style="display:none" />
+</form>
+
+<form method="post" action="Home/SetLanguage">
+    <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+    <input type="submit" value="English" />
+    <input type="hidden" name="culture" value="en-US" style="display:none" />
+</form>
+    <script language="javascript">
+        function DoPost() {
+            document.forms["languageForm"].submit();
+        }
+    </script>
+    <br />
+    <br />
+    <br />
+    CurrentCulture @ViewData["CurrentCulture"].ToString()
+    CurrentUICulture @ViewData["CurrentUICulture"].ToString();
+
